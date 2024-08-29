@@ -28,7 +28,7 @@
 /* Стилі для модального вікна */
 
 .modal {
-    display: none;
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -37,18 +37,29 @@
     background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    transition: opacity 0.05s ease; /* анімація для плавної зміни прозорості */
+    opacity: 0; /* початкова прозорість 0 (невидиме) */
     z-index: 1000;
 }
 
 .modal.is-open {
-    display: flex;
+    display: flex; /* відображаємо модальне вікно, коли клас 'is-open' додано */
+    opacity: 1; /* встановлюємо прозорість 1 (видиме) */
 }
 
 .modal-image {
     max-width: 90%;
-    min-height: 90%;
+    max-height: 90%;
     border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* анімація для масштабу та прозорості */
+    transform: scale(0.9); /* початкове масштабування */
+    opacity: 0; /* початкова прозорість зображення */
 }
+.modal.is-open .modal-image {
+    transform: scale(1); /* кінцеве масштабування */
+    opacity: 1; /* кінцева прозорість зображення */
+    }
+
 
 .modal-close {
     position: absolute;
